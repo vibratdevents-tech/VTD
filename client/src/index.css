@@ -1,0 +1,253 @@
+/* 
+ * VIBRA TD EVENTS — Design System
+ * Philosophy: "Vibrant Celebration Grid" — Contemporary Caribbean event branding
+ * Colors: Brand Teal (#2BBCB0), Warm Gold (#F5A623), Deep Magenta (#E91E8C), Dark Navy (#1A2332)
+ * Typography: Raleway ExtraBold (display) + Lato (body) + Dancing Script (accents)
+ * Layout: Diagonal clip-path sections, asymmetric grids, photography-first
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Brand Colors */
+  --vibra-teal: #2BBCB0;
+  --vibra-teal-dark: #1A8C85;
+  --vibra-gold: #F5A623;
+  --vibra-gold-dark: #D4891A;
+  --vibra-magenta: #E91E8C;
+  --vibra-navy: #1A2332;
+  --vibra-navy-light: #253347;
+
+  /* Semantic tokens */
+  --primary: oklch(0.68 0.12 185);       /* teal */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.75 0.14 70);      /* gold */
+  --secondary-foreground: oklch(0.2 0 0);
+  --accent: oklch(0.62 0.22 330);        /* magenta */
+  --accent-foreground: oklch(1 0 0);
+
+  --radius: 0.75rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.15 0.02 240);
+  --card: oklch(0.99 0 0);
+  --card-foreground: oklch(0.15 0.02 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 240);
+  --muted: oklch(0.96 0.005 240);
+  --muted-foreground: oklch(0.55 0.015 240);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.9 0.005 240);
+  --input: oklch(0.9 0.005 240);
+  --ring: oklch(0.68 0.12 185);
+  --chart-1: oklch(0.68 0.12 185);
+  --chart-2: oklch(0.75 0.14 70);
+  --chart-3: oklch(0.62 0.22 330);
+  --chart-4: oklch(0.55 0.18 240);
+  --chart-5: oklch(0.7 0.15 150);
+  --sidebar: oklch(0.15 0.02 240);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.68 0.12 185);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.25 0.02 240);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.3 0.02 240);
+  --sidebar-ring: oklch(0.68 0.12 185);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Lato', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Vibra brand utility classes */
+  .vibra-teal { color: var(--vibra-teal); }
+  .vibra-gold { color: var(--vibra-gold); }
+  .vibra-magenta { color: var(--vibra-magenta); }
+  .bg-vibra-teal { background-color: var(--vibra-teal); }
+  .bg-vibra-gold { background-color: var(--vibra-gold); }
+  .bg-vibra-magenta { background-color: var(--vibra-magenta); }
+  .bg-vibra-navy { background-color: var(--vibra-navy); }
+
+  /* Diagonal section divider */
+  .clip-diagonal-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    padding-bottom: 8rem;
+    margin-bottom: -4rem;
+  }
+  .clip-diagonal-top {
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+    padding-top: 8rem;
+    margin-top: -4rem;
+  }
+
+  /* Service card hover */
+  .service-card {
+    transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 220ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+
+  /* Scroll reveal animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    animation: fadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
+  .fade-up-delay-1 { animation-delay: 80ms; }
+  .fade-up-delay-2 { animation-delay: 160ms; }
+  .fade-up-delay-3 { animation-delay: 240ms; }
+  .fade-up-delay-4 { animation-delay: 320ms; }
+  .fade-up-delay-5 { animation-delay: 400ms; }
+
+  /* Button press effect */
+  .btn-press:active {
+    transform: scale(0.97);
+    transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Gradient overlay for image cards */
+  .img-overlay {
+    background: linear-gradient(to top, rgba(26,35,50,0.85) 0%, rgba(26,35,50,0.2) 60%, transparent 100%);
+  }
+
+  /* Teal gradient overlay */
+  .img-overlay-teal {
+    background: linear-gradient(135deg, rgba(43,188,176,0.75) 0%, rgba(26,35,50,0.5) 100%);
+  }
+
+  /* Gold gradient overlay */
+  .img-overlay-gold {
+    background: linear-gradient(135deg, rgba(245,166,35,0.75) 0%, rgba(26,35,50,0.5) 100%);
+  }
+
+  /* Magenta gradient overlay */
+  .img-overlay-magenta {
+    background: linear-gradient(135deg, rgba(233,30,140,0.75) 0%, rgba(26,35,50,0.5) 100%);
+  }
+
+  /* Nav underline slide */
+  .nav-link {
+    position: relative;
+    transition: color 200ms ease;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--vibra-teal);
+    transition: width 250ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  /* Testimonial quote mark */
+  .quote-mark {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--vibra-teal);
+    opacity: 0.3;
+  }
+
+  /* Dancing script accent */
+  .accent-script {
+    font-family: 'Dancing Script', cursive;
+  }
+}
